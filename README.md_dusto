@@ -995,3 +995,250 @@ Explore visualizations on our front-end:
 https://blockchair.com/cardano
 https://blockchair.com/
 https://blockchair.com/compare
+Cardano-like blockchain stats
+Endpoint:
+
+https://api.blockchair.com/cardano/stats
+Output:
+
+data contains an array with blockchain statistics:
+
+blocks — total number of blocks
+transactions — total number of transactions
+circulation — number of coins in circulation (in satoshi)
+blockchain_size — total size of all blocks in bytes (note: it's not the size of a full node, it's just bare blocks; nodes are bigger in size as they use database indexing, etc)
+best_block_epoch — the latest epoch number
+best_block_slot — the latest slot number
+best_block_height — the latest block height
+best_block_hash — the latest block hash
+best_block_time — the latest block time
+blocks_24h — number of blocks over the last 24 hours
+transactions_24h — number of transactions over the last 24 hours
+market_price_usd — average market price of 1 coin in USD (market data source: CoinGecko)
+market_price_btc — average market price of 1 coin in BTC
+market_price_usd_change_24h_percentage — market price change in percent for 24 hours
+market_cap_usd — market capitalization (coins in circulation * price per coin in USD)
+market_dominance_percentage — dominance index (how much % of the total cryptocurrency market is the market capitalization of the coin)
+countdowns (optional) — an optional array of events ([event, time_left] format), where time_left is the number of seconds till the event
+Example output:
+
+https://api.blockchair.com/cardano/stats:
+
+{
+  "data": {
+    "blocks": 3673733,
+    "transactions": 1725714,
+    "best_block_epoch": 170,
+    "best_block_slot": 3790,
+    "best_block_height": 3673733,
+    "best_block_hash": "d70406d8707105b333f2107d6d786316f8232fd8c7beb9565b02f134fe1c03f2",
+    "best_block_time": "2020-01-22 18:48:11",
+    "blocks_24h": 4320,
+    "transactions_24h": 1987,
+    "circulation": 31112169560261348,
+    "blockchain_size": 3474703715,
+    "market_price_usd": 0.04703496,
+    "market_price_btc": 0.000004687558301774,
+    "market_price_usd_change_24h_percentage": -3.43458,
+    "market_cap_usd": 1465483381,
+    "market_dominance_percentage": 0.55
+  },
+  "context": {
+    "code": 200,
+    ...
+  }
+}
+Request cost formula:
+
+Always 1.
+
+Explore visualizations on our front-end:
+
+https://blockchair.com/cardano
+Mixin-like DAG stats
+Endpoint:
+
+https://api.blockchair.com/mixin/stats
+Output:
+
+data contains an array with DAG statistics:
+
+snapshots — total number of snapshots
+snapshots_24h — number of snapshots over the last 24 hours
+transactions_24h — number of transactions over the last 24 hours
+mempool_transactions — number of unvonfirmed transactions
+tps_24h — transactions per second over 24 hours period
+best_snapshot_height — the latest snapshot number
+best_snapshot_hash — the latest snapshots hash
+best_snapshot_time — the latest snapshot time (UTC)
+circulation — number of coins in circulation (smallest denomination)
+circulation_xin — number of coins in circulation (in XINs)
+market_price_usd — average market price of 1 coin in USD (market data source: CoinGecko)
+market_price_btc — average market price of 1 coin in BTC
+market_price_usd_change_24h_percentage — market price change in percent for 24 hours
+market_cap_usd — market capitalization (coins in circulation * price per coin in USD)
+market_dominance_percentage — dominance index (how much % of the total cryptocurrency market is the market capitalization of the coin)
+countdowns (optional) — an optional array of events ([event, time_left] format), where time_left is the number of seconds till the event
+accepted_nodes — number of accepted network nodes
+mintings — number of coin mintings
+Example output:
+
+https://api.blockchair.com/mixin/stats:
+
+{
+  "data": {
+    "snapshots": 18626733,
+    "snapshots_24h": 135000,
+    "transactions_24h": 135000,
+    "mempool_transactions": 0,
+    "tps_24h": 1.5625,
+    "best_snapshot_height": 18626732,
+    "best_snapshot_hash": "6cc46ccbd753dbaf09c1a72d94225af0aaabc5c0c1f705939c7ea77515d6d18c",
+    "best_snapshot_time": "2020-04-22 16:33:08",
+    "circulation_xin": 550991.78082032,
+    "circulation": 55099178082032,
+    "market_price_usd": 168.06,
+    "market_price_btc": 0.02323,
+    "market_price_usd_change_24h_percentage": 2.901,
+    "market_cap_usd": 84247126,
+    "market_dominance_percentage": 0.01,
+    "accepted_nodes": 22,
+    "mintings": 419
+  },
+  "context": {
+    "code": 200,
+    "state": 18626733,
+    ...
+  }
+}
+Request cost formula:
+
+Always 1.
+
+Explore visualizations on our front-end:
+
+https://blockchair.com/mixin
+Tezos-like blockchain stats
+Endpoint:
+
+https://api.blockchair.com/tezos/stats
+Output:
+
+data contains an array with blockchain statistics:
+
+blocks — total number of blocks
+operations — total number of operations
+operations_24h — number of operations over the last 24 hours
+volume_24h — volume transacted over the last 24 hours
+inflation_24h — newly minted coin count over the last 24 hours
+best_block_height — the latest block number
+best_block_hash — its hash…
+best_block_time — … and timestamp
+circulation and circulation_xtz — total circulating supply
+market_price_usd — average market price of 1 coin in USD (market data source: CoinGecko)
+market_price_btc — average market price of 1 coin in BTC
+market_price_usd_change_24h_percentage — market price change in percent for 24 hours
+market_cap_usd — market capitalization (coins in circulation * price per coin in USD)
+market_dominance_percentage — dominance index (how much % of the total cryptocurrency market is the market capitalization of the coin)
+countdowns (optional) — an optional array of events ([event, time_left] format), where time_left is the number of seconds till the event
+Example output:
+
+https://api.blockchair.com/tezos/stats:
+
+{
+  "data": {
+    "blocks": 974146,
+    "operations": 25664439,
+    "operations_24h": 41556,
+    "volume_24h": 19467451942626,
+    "inflation_24h": 114867833312,
+    "best_block_height": 974145,
+    "best_block_hash": "BL5GrLjJVpKfDGBxh3GgVKE25hYcX8FJEN7LmmohyXrS42H2Yx1",
+    "best_block_time": "2020-05-29 22:31:38",
+    "circulation_xtz": 712341492.340773,
+    "circulation": 712341492340773,
+    "market_price_usd": 2.86,
+    "market_price_btc": 0.00030425564282515,
+    "market_price_usd_change_24h_percentage": 2.51544,
+    "market_cap_usd": 2033457725,
+    "market_dominance_percentage": 0.77
+  },
+  "context": {
+    "code": 200,
+    "state": 974145,
+    ...
+  }
+}
+Request cost formula:
+
+Always 1.
+
+Explore visualization on our front-end:
+
+https://blockchair.com/tezos
+EOS-like blockchain stats
+Endpoint:
+
+https://api.blockchair.com/eos/stats
+Output:
+
+data contains an array with blockchain statistics:
+
+blocks — total number of blocks
+circulation_eos — total circulating supply in EOS
+circulation_limit_eos — circulating supply limit
+staked_eos — staked amount of EOS
+staked_percentage — (staked_eos / circulation_eos) * 100%
+best_block_height — latest block number
+best_block_time — its timestamp...
+best_block_producer — and producer account name
+irreversible_block_height — latest irreversible block number
+irreversible_block_hash — its hash
+ram_max_size — max RAM size in bytes
+ram_allocated_size — allocated RAM size in bytes
+ram_allocated_percentage — (ram_allocated_size / ram_max_size) * 100%
+market_price_usd — average market price of 1 coin in USD (market data source: CoinGecko)
+market_price_btc — average market price of 1 coin in BTC
+market_price_usd_change_24h_percentage — market price change in percent for 24 hours
+market_cap_usd — market capitalization (coins in circulation * price per coin in USD)
+market_dominance_percentage — dominance index (how much % of the total cryptocurrency market is the market capitalization of the coin)
+countdowns (optional) — an optional array of events ([event, time_left] format), where time_left is the number of seconds till the event
+Example output:
+
+https://api.blockchair.com/tezos/stats:
+
+{
+  "data": {
+    "blocks": 125855542,
+    "circulation_eos": 1020158333.6877,
+    "circulation_limit_eos": 10000000000,
+    "staked_eos": 524985046.5825,
+    "staked_percentage": 51.46113394817525,
+    "best_block_height": 125855542,
+    "best_block_time": "2020-06-13 17:33:53",
+    "best_block_producer": "newdex.bp",
+    "irreversible_block_height": 125855206,
+    "irreversible_block_hash": "078065e6d5a20d200729a117d6747761b52b9531eddb1072a62b5fe839dec3da",
+    "ram_max_size": 192171732992,
+    "ram_allocated_size": 81993066226,
+    "ram_allocated_percentage": 42.66655920171846,
+    "market_price_usd": 2.59,
+    "market_price_btc": 0.00027429815680111,
+    "market_price_usd_change_24h_percentage": 0.6576,
+    "market_cap_usd": 2433086848,
+    "market_dominance_percentage": 0.9
+  },
+  "context": {
+    "code": 200,
+    "state": 125855542,
+    "request_cost": 1,
+    ...
+  }
+}
+Request cost formula:
+
+Always 1.
+
+Explore visualization on our front-end:
+
+https://blockchair.com/eos
