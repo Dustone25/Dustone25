@@ -14,7 +14,8 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-Blokchain	Group	API path prefix	Support status
+<curl Blockchain	Group	API path prefix	Support status
+
 Bitcoin	Bitcoin-like	https://api.blockchair.com/bitcoin	Full support
 Bitcoin Cash	Bitcoin-like	https://api.blockchair.com/bitcoin-cash	Full support
 Ethereum	Ethereum-like	https://api.blockchair.com/ethereum	Full support
