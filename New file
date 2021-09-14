@@ -1,0 +1,18 @@
+ awesome.
+The response will be a random selection from our design philosophies.
+
+Next, let's GET Chris Wanstrath's GitHub profile:
+
+# GET /users/defunkt
+$ curl https://api.github.com/users/defunkt
+
+> {
+>   "login": "defunkt",
+>   "id": 2,
+>   "node_id": "MDQ6VXNlcjI=",
+>   "avatar_url": "https://avatars.githubusercontent.com/u/2?v=4",
+>   "gravatar_id": "",
+>   "url": "https://api.github.com/users/defunkt",
+>   "html_url": "https://github.com/defunkt",
+>   ...
+> }
