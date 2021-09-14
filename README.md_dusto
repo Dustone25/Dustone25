@@ -477,6 +477,521 @@ Request cost formula:
 Always 1.
 
 Explore visualizations on our front-end:
+Bitcoin-like blockchain stats
+Endpoints:
 
+https://api.blockchair.com/bitcoin/stats
+https://api.blockchair.com/bitcoin-cash/stats
+https://api.blockchair.com/litecoin/stats
+https://api.blockchair.com/bitcoin-sv/stats
+https://api.blockchair.com/dogecoin/stats
+https://api.blockchair.com/dash/stats
+https://api.blockchair.com/groestlcoin/stats
+https://api.blockchair.com/zcash/stats
+https://api.blockchair.com/ecash/stats
+https://api.blockchair.com/bitcoin/testnet/stats
+Output:
+
+data contains an array with blockchain statistics:
+
+blocks — total number of blocks (note that it's 1 more than the latest block number as there is block #0)
+transactions — total number of transactions
+outputs — total number of outputs (including spent)
+circulation — number of coins in circulation (in satoshi)
+blockchain_size — total size of all blocks in bytes (note: it's not the size of a full node, it's just bare blocks; nodes are bigger in size as they use database indexing, etc)
+nodes— number of full network nodes (it's an approximate number and actually not a blockchain metric)
+difficulty — current mining difficulty
+hashrate_24h — approximated hashrate over the last 24 hours (returned as a string as it doesn't fit into an integer)
+next_retarget_time_estimate — approximate timestamp of the next difficulty retarget (this field is available for Bitcoin and Litecoin only)
+next_difficulty_estimate — approximate next difficulty value (this field is available for Bitcoin and Litecoin only)
+best_block_height — the latest block height
+best_block_hash — the latest block hash
+best_block_time — the latest block time
+mempool_transactions — number of transactions in the mempool
+mempool_outputs — number of outputs in the mempool
+mempool_size — mempool size in bytes
+mempool_tps — number of transactions per second added to the mempool
+mempool_total_fee_usd — sum of transaction fees in the mempool, in USD
+blocks_24h — number of blocks mined over the last 24 hours
+transactions_24h — number of transactions confirmed over the last 24 hours
+volume_24h — total monetary volume of transactions over the last 24 hours
+average_transaction_fee_24h — average transaction fee over the last 24 hours
+average_transaction_fee_usd_24h — the same in USD
+median_transaction_fee_24h— median transaction fee over the last 24 hours
+median_transaction_fee_usd_24h — the same in USD
+inflation_24h— number of new coins mined over the last 24 hours (in satoshi), this can be considered as the daily inflation
+inflation_usd_24h — the same in USD
+cdd_24h— total coindays destroyed over the last 24 hours
+largest_transaction_24h — array of hash and value_usd — biggest payment over the last 24 hours
+market_price_usd — average market price of 1 coin in USD (market data source: CoinGecko)
+market_price_btc — average market price of 1 coin in BTC (for Bitcoin it always returns 1)
+market_price_usd_change_24h_percentage — market price change in percent for 24 hours
+market_cap_usd — market capitalization (coins in circulation * price per coin in USD)
+market_dominance_percentage — dominance index (how much % of the total cryptocurrency market is the market capitalization of the coin)
+countdowns (optional) — an optional array of events ([event, time_left] format), where time_left is the number of seconds till the event
+suggested_transaction_fee_per_byte_sat — suggests a proper transaction fee in satoshi per byte based on the latest block
+hodling_addresses — the total number of addresses with positive balance
+Example output:
+
+https://api.blockchair.com/bitcoin/stats:
+
+{
+  "data": {
+    "blocks": 690165,
+    "transactions": 654248075,
+    "outputs": 1776138129,
+    "circulation": 1875100229497096,
+    "blocks_24h": 130,
+    "transactions_24h": 229726,
+    "difficulty": 14363025673660,
+    "volume_24h": 187713267560047,
+    "mempool_transactions": 6591,
+    "mempool_outputs": 16532,
+    "mempool_size": 5076549,
+    "mempool_tps": 5.416666666666667,
+    "mempool_total_fee_usd": 14219.1005,
+    "best_block_height": 690164,
+    "best_block_hash": "000000000000000000023fcb3703bf89ddbfc1ef5109f21c2387a9d630b78c6e",
+    "best_block_time": "2021-07-08 14:37:00",
+    "blockchain_size": 353767186147,
+    "average_transaction_fee_24h": 14421,
+    "inflation_24h": 81250000000,
+    "median_transaction_fee_24h": 5269,
+    "cdd_24h": 3696149.5996842394,
+    "mempool_outputs": 44316,
+    "largest_transaction_24h": {
+      "hash": "7a83c11f42dadad1c6916cceb079835aa09ed70127dba7cdf15aa904277c907d",
+      "value_usd": 773548352
+    },
+    "nodes": 8502,
+    "hashrate_24h": "92904707138521187685",
+    "inflation_usd_24h": 26587437.5,
+    "average_transaction_fee_usd_24h": 4.719001232335435,
+    "median_transaction_fee_usd_24h": 1.724338485,
+    "market_price_usd": 32723,
+    "market_price_btc": 1,
+    "market_price_usd_change_24h_percentage": -5.7534,
+    "market_cap_usd": 613578128025,
+    "market_dominance_percentage": 43.03,
+    "next_retarget_time_estimate": "2021-07-18 19:23:20",
+    "next_difficulty_estimate": 17958208674260,
+    "countdowns": [],
+    "suggested_transaction_fee_per_byte_sat": 17,
+    "hodling_addresses": 38343147
+  },
+  "context": {
+    "code": 200,
+    ...
+  }
+}
+Request cost formula:
+
+Always 1.
+
+Explore visualizations on our front-end:
+
+https://blockchair.com/bitcoin
+https://blockchair.com/bitcoin-cash
+https://blockchair.com/litecoin
+https://blockchair.com/bitcoin-sv
+https://blockchair.com/dogecoin
+https://blockchair.com/dash
+https://blockchair.com/groestlcoin
+https://blockchair.com/zcash
+https://blockchair.com/ecash
+https://blockchair.com/bitcoin/testnet
+Ethereum-like blockchain stats
+Endpoints:
+
+https://api.blockchair.com/ethereum/stats
+https://api.blockchair.com/ethereum/testnet/stats
+Output:
+
+data contains an array with blockchain statistics:
+
+blocks — total number of blocks (note that it's 1 more than the latest block number as there is block #0)
+uncles — total number of uncles
+transactions — total number of transactions
+calls — total number of internal calls
+circulation_approximate — number of coins in circulation (in wei)
+blockchain_size — total size of all blocks in bytes (note: it's not the size of a full node, it's just bare blocks; nodes are bigger in size as they use database indexing, etc)
+difficulty — current mining difficulty
+hashrate_24h — approximated hashrate over the last 24 hours (returned as a string as it doesn't fit into an integer)
+best_block_height — the latest block height
+best_block_hash — the latest block hash
+best_block_time — the latest block time
+mempool_transactions — number of transactions in the mempool
+mempool_median_gas_price — median gas price of transactions in the mempool
+mempool_tps — number of transactions per second added to the mempool
+mempool_total_value_approximate — sum of transaction amounts in the mempool, in wei
+blocks_24h — number of blocks mined over the last 24 hours
+uncles_24h — number of uncles over the last 24 hours
+transactions_24h — number of transactions confirmed over the last 24 hours
+volume_24h_approximate — total monetary volume of transactions over the last 24 hours
+average_transaction_fee_24h — average transaction fee over the last 24 hours
+average_transaction_fee_usd_24h — the same in USD
+median_transaction_fee_24h— median transaction fee over the last 24 hours
+median_transaction_fee_usd_24h — the same in USD
+average_simple_transaction_fee_24h — average simple transfer (i.e. just sending ethers for 21.000 gas) fee over the last 24 hours
+average_simple_transaction_fee_usd_24h — the same in USD
+median_simple_transaction_fee_24h— median simple transfer fee over the last 24 hours
+median_simple_transaction_fee_usd_24h — the same in USD
+inflation_24h— number of new coins mined over the last 24 hours (in satoshi), this can be considered as the daily inflation
+inflation_usd_24h — the same in USD
+largest_transaction_24h: array of hash and value_usd — biggest payment over the last 24 hours
+market_price_usd — average market price of 1 coin in USD (market data source: CoinGecko)
+market_price_btc — average market price of 1 coin in BTC
+market_price_usd_change_24h_percentage — market price change in percent for 24 hours
+market_cap_usd — market capitalization (coins in circulation * price per coin in USD)
+market_dominance_percentage — dominance index (how much % of the total cryptocurrency market is the market capitalization of the coin)
+countdowns (optional) — an optional array of events ([event, time_left] format), where time_left is the number of seconds till the event
+layer_2.erc_20 — an array of stats on the ERC-20 token layer consisting of the following elements:
+tokens — total number of created ERC-20 tokens (which have at least 1 transaction)
+transactions — total number of ERC-20 transfers
+tokens_24h — number of tokens created over the last 24 hours
+transactions_24h — total number of ERC-20 transfers over the last 24 hours
+suggested_transaction_fee_gwei_options — recommended transaction fees in gwei. It has 5 options: sloth for occasions when take the risk and wait; slow, normal, and fast if you want to get the transaction confirmed within 2-10 minutes; cheetah for an almost guaranteed next-block confirmation
+Example output:
+
+https://api.blockchair.com/ethereum/stats:
+
+{
+  "data": {
+    "blocks": 12023239,
+    "transactions": 1043567165,
+    "blocks_24h": 6433,
+    "circulation_approximate": "115018182780730000000000000",
+    "transactions_24h": 1302619,
+    "difficulty": 5447494005324207,
+    "volume_24h_approximate": "6300512633065118000000000",
+    "mempool_transactions": 94866,
+    "mempool_median_gas_price": 40000000000,
+    "mempool_tps": 7.983333333333333,
+    "mempool_total_value_approximate": "77011108570302550000000",
+    "best_block_height": 12023240,
+    "best_block_hash": "4338ee00f57c8d0bfcb5e9bbbdc47ab40d9685e2b41801541acda53da71132f3",
+    "best_block_time": "2021-03-12 10:43:40",
+    "uncles": 1121915,
+    "uncles_24h": 307,
+    "blockchain_size": 213678005011,
+    "calls": 3032610029,
+    "average_transaction_fee_24h": "9339692912924509",
+    "median_transaction_fee_24h": "4887620538746249",
+    "inflation_24h": 13411.4375,
+    "average_simple_transaction_fee_24h": "2947056048574188",
+    "median_simple_transaction_fee_24h": "3129000000000000",
+    "largest_transaction_24h": {
+      "hash": "0xbc4fc78885355694f0a5ffe27af7e2157f323855a4e40beaf37905e3f3617640",
+      "value_usd": 872236755.0026
+    },
+    "hashrate_24h": "453957833777017",
+    "inflation_usd_24h": 23792024.239375,
+    "average_transaction_fee_usd_24h": 16.56870862445721,
+    "median_transaction_fee_usd_24h": 8.670687711941234,
+    "average_simple_transaction_fee_usd_24h": 5.228106900731096,
+    "median_simple_transaction_fee_usd_24h": 5.55087729,
+    "market_price_usd": 1774.01,
+    "market_price_btc": 0.031517784173684,
+    "market_price_usd_change_24h_percentage": 0.95673,
+    "market_cap_usd": 203352392960,
+    "market_dominance_percentage": 11.66,
+    "layer_2": {
+      "erc_20": {
+        "tokens": 246816,
+        "transactions": 604957673,
+        "tokens_24h": 100,
+        "transactions_24h": 859287
+      }
+    },
+    "countdowns": [
+      {
+        "event": "eth2 launch",
+        "eth_staked": 3487170.000069,
+        "eth_needed": 524288
+      }
+    ],
+    "suggested_transaction_fee_gwei_options": {
+      "sloth": 102,
+      "slow": 115,
+      "normal": 122,
+      "fast": 134,
+      "cheetah": 173
+    }
+  },
+  "context": {
+    "code": 200,
+    "state": 12023239,
+    "state_layer_2": 12023239,
+    "request_cost": 1,
+    ...
+  }
+}
+Request cost formula:
+
+Always 1.
+
+Explore visualization on our front-end:
+
+https://blockchair.com/ethereum
+https://blockchair.com/ethereum/testnet
+Ripple-like blockchain stats
+Endpoint:
+
+https://api.blockchair.com/ripple/stats
+Output:
+
+data contains an array with blockchain statistics:
+
+ledgers — total number of ledgers
+circulation — number of coins in circulation (in XRP)
+best_ledger_height — the latest ledger number
+best_ledger_hash — the latest ledger hash
+best_ledger_time — the latest ledger time
+mempool_transactions — number of unconfirmed transactions
+mempool_tps — number of transactions per second added to the mempool
+mempool_total_fee_usd — sum of transaction fees in the mempool, in USD
+ledgers_24h — number of ledgers closed over the last 24 hours
+transactions_24h — number of transactions confirmed over the last 24 hours
+volume_24h — total monetary volume of transactions over the last 24 hours
+average_transaction_fee_24h — average transaction fee over the last 24 hours
+average_transaction_fee_usd_24h — the same in USD
+median_transaction_fee_24h— median transaction fee over the last 24 hours
+median_transaction_fee_usd_24h — the same in USD
+inflation_24h— number of new coins issued over the last 24 hours (can be negative in case more coins are destroyed than issued)
+inflation_usd_24h — the same in USD
+largest_transaction_24h: array of hash and value_usd — biggest payment over the last 24 hours
+market_price_usd — average market price of 1 coin in USD (market data source: CoinGecko)
+market_price_btc — average market price of 1 coin in BTC
+market_price_usd_change_24h_percentage — market price change in percent for 24 hours
+market_cap_usd — market capitalization (coins in circulation * price per coin in USD)
+market_dominance_percentage — dominance index (how much % of the total cryptocurrency market is the market capitalization of the coin)
+countdowns (optional) — an optional array of events ([event, time_left] format), where time_left is the number of seconds till the event
+Example output:
+
+https://api.blockchair.com/ripple/stats:
+
+{
+  "data": {
+    "market_price_usd": 0.290587,
+    "market_price_btc": 0.0000365637358586,
+    "market_price_usd_change_24h_percentage": -3.31938,
+    "market_cap_usd": 12543700763,
+    "market_dominance_percentage": 5.78,
+    "ledgers": 50795576,
+    "best_ledger_height": 50795575,
+    "best_ledger_hash": "07AFA06C63D6C24C31CBD83938A711C098D6C251EEAFC7AE65733CEA3D5EE32A",
+    "best_ledger_time": "2019-10-18 16:28:41",
+    "mempool_transactions": 43,
+    "mempool_total_fee_usd": 0.00024496484099999997,
+    "circulation": 99991318056632960,
+    "average_transaction_fee_24h": 874.9259920487995,
+    "median_transaction_fee_24h": 12,
+    "average_transaction_fee_usd_24h": 0.00025366991765268457,
+    "median_transaction_fee_usd_24h": 0.000003479196,
+    "ledgers_24h": 22359,
+    "transactions_24h": 864272,
+    "mempool_tps": 10.003148148148147,
+    "inflation_24h": -756174037,
+    "inflation_usd_24h": -219.239807069521,
+    "volume_24h": 712237245463407,
+    "largest_transaction_24h": {
+      "hash": "A773E7C3D07D76834280766AF7F90FE7E773E8D5AD77327A603BD6A5B1083611",
+      "value_usd": 14496650
+    }
+  },
+  "context": {
+    "code": 200,
+    ...
+  }
+}
+Request cost formula:
+
+Always 1.
+
+Explore visualization on our front-end:
+
+https://blockchair.com/ripple
+Stellar-like blockchain stats
+Endpoint:
+
+https://api.blockchair.com/stellar/stats
+Output:
+
+data contains an array with blockchain statistics:
+
+ledgers — total number of ledgers
+circulation — number of coins in circulation (in stroops)
+best_ledger_height — the latest ledger number
+best_ledger_hash — the latest ledger hash
+best_ledger_time — the latest ledger time
+ledgers_24h — number of ledgers closed over the last 24 hours
+transactions_24h — number of transactions confirmed over the last 24 hours
+successful_transactions_24h— number of successful transactions over the last 24 hours
+failed_transactions_24h— number of failed transactions over the last 24 hours
+operations_24h — number of operations over the last 24 hours
+average_transaction_fee_24h — average transaction fee over the last 24 hours
+average_transaction_fee_usd_24h — the same in USD
+market_price_usd — average market price of 1 coin in USD (market data source: CoinGecko)
+market_price_btc — average market price of 1 coin in BTC
+market_price_usd_change_24h_percentage — market price change in percent for 24 hours
+market_cap_usd — market capitalization (coins in circulation * price per coin in USD)
+market_dominance_percentage — dominance index (how much % of the total cryptocurrency market is the market capitalization of the coin)
+countdowns (optional) — an optional array of events ([event, time_left] format), where time_left is the number of seconds till the event
+Example output:
+
+https://api.blockchair.com/stellar/stats:
+
+{
+  "data": {
+    "ledgers": 26602978,
+    "best_ledger_height": 26602978,
+    "best_ledger_hash": "3151f16e9a6ce9ee43f57a068c83a04c7e864ccc7d1027519d42aab79e13b40f",
+    "best_ledger_time": "2019-11-02 16:42:01",
+    "circulation": 1054439020873472900,
+    "ledgers_24h": 15643,
+    "transactions_24h": 461072,
+    "successful_transactions_24h": 285958,
+    "failed_transactions_24h": 175114,
+    "operations_24h": 1085466,
+    "average_transaction_fee_24h": 283.5731513695005,
+    "average_transaction_fee_usd_24h": 0.000001991250668916633,
+    "market_price_usd": 0.07022,
+    "market_price_btc": 0.0000075229454120425,
+    "market_price_usd_change_24h_percentage": 3.41847,
+    "market_cap_usd": 1406714595,
+    "market_dominance_percentage": 0.56
+  },
+  "context": {
+    "code": 200,
+    ...
+  }
+}
+Request cost formula:
+
+Always 1.
+
+Explore visualization on our front-end:
+
+https://blockchair.com/stellar
+Monero-like blockchain stats
+Endpoint:
+
+https://api.blockchair.com/monero/stats
+Output:
+
+data contains an array with blockchain statistics:
+
+blocks — total number of blocks (note that it's 1 more than the latest block number as there is block #0)
+transactions — total number of transactions
+circulation — number of coins in circulation (in satoshi)
+blockchain_size — total size of all blocks in bytes (note: it's not the size of a full node, it's just bare blocks; nodes are bigger in size as they use database indexing, etc)
+difficulty — current mining difficulty
+best_block_height — the latest block height
+best_block_hash — the latest block hash
+best_block_time — the latest block time
+mempool_transactions — number of transactions in the mempool
+mempool_size — mempool size in bytes
+market_price_usd — average market price of 1 coin in USD (market data source: CoinGecko)
+market_price_btc — average market price of 1 coin in BTC
+market_price_usd_change_24h_percentage — market price change in percent for 24 hours
+market_cap_usd — market capitalization (coins in circulation * price per coin in USD)
+market_dominance_percentage — dominance index (how much % of the total cryptocurrency market is the market capitalization of the coin)
+countdowns (optional) — an optional array of events ([event, time_left] format), where time_left is the number of seconds till the event
+suggested_transaction_fee_per_byte_sat — suggests a proper transaction fee in piconero per byte
+Example output:
+
+https://api.blockchair.com/stellar/stats:
+
+{
+  "data": {
+    "blocks": 2012711,
+    "transactions": 6147319,
+    "circulation": 17402679371662576000,
+    "difficulty": 127374112357,
+    "hashrate_24h": 1061450936,
+    "mempool_transactions": 140,
+    "mempool_size": 681994000,
+    "best_block_height": 2012710,
+    "best_block_hash": "3cfcac0ccd9e058f56158686fd4d7258351071e113feac9c1b10da65ce62cce5",
+    "best_block_time": "2020-01-16 20:42:47",
+    "suggested_transaction_fee_per_byte_sat": 13,
+    "market_price_usd": 79.36,
+    "market_price_btc": 0.0079091090293004,
+    "market_price_usd_change_24h_percentage": -0.96449,
+    "market_cap_usd": 1362957367,
+    "market_dominance_percentage": 0.52
+  },
+  "context": {
+    "code": 200,
+    ...
+  }
+}
+Request cost formula:
+
+Always 1.
+
+Explore visualizations on our front-end:
+
+https://blockchair.com/monero
+Cardano-like blockchain stats
+Endpoint:
+
+https://api.blockchair.com/cardano/stats
+Output:
+
+data contains an array with blockchain statistics:
+
+blocks — total number of blocks
+transactions — total number of transactions
+circulation — number of coins in circulation (in satoshi)
+blockchain_size — total size of all blocks in bytes (note: it's not the size of a full node, it's just bare blocks; nodes are bigger in size as they use database indexing, etc)
+best_block_epoch — the latest epoch number
+best_block_slot — the latest slot number
+best_block_height — the latest block height
+best_block_hash — the latest block hash
+best_block_time — the latest block time
+blocks_24h — number of blocks over the last 24 hours
+transactions_24h — number of transactions over the last 24 hours
+market_price_usd — average market price of 1 coin in USD (market data source: CoinGecko)
+market_price_btc — average market price of 1 coin in BTC
+market_price_usd_change_24h_percentage — market price change in percent for 24 hours
+market_cap_usd — market capitalization (coins in circulation * price per coin in USD)
+market_dominance_percentage — dominance index (how much % of the total cryptocurrency market is the market capitalization of the coin)
+countdowns (optional) — an optional array of events ([event, time_left] format), where time_left is the number of seconds till the event
+Example output:
+
+https://api.blockchair.com/cardano/stats:
+
+{
+  "data": {
+    "blocks": 3673733,
+    "transactions": 1725714,
+    "best_block_epoch": 170,
+    "best_block_slot": 3790,
+    "best_block_height": 3673733,
+    "best_block_hash": "d70406d8707105b333f2107d6d786316f8232fd8c7beb9565b02f134fe1c03f2",
+    "best_block_time": "2020-01-22 18:48:11",
+    "blocks_24h": 4320,
+    "transactions_24h": 1987,
+    "circulation": 31112169560261348,
+    "blockchain_size": 3474703715,
+    "market_price_usd": 0.04703496,
+    "market_price_btc": 0.000004687558301774,
+    "market_price_usd_change_24h_percentage": -3.43458,
+    "market_cap_usd": 1465483381,
+    "market_dominance_percentage": 0.55
+  },
+  "context": {
+    "code": 200,
+    ...
+  }
+}
+Request cost formula:
+
+Always 1.
+
+Explore visualizations on our front-end:
+
+https://blockchair.com/cardano
 https://blockchair.com/
 https://blockchair.com/compare
