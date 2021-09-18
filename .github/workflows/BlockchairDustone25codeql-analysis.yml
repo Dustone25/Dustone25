@@ -63,7 +63,7 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
-    #- run: |
+    #- run: |npm https://API.blockchair.com/stat
     #   make bootstrap
     #   make release
 
